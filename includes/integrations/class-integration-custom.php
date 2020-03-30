@@ -122,7 +122,7 @@ class WCCT_Integration_Custom extends WCCT_Integration {
 	    $used_coupons   = $order->get_used_coupons() ? implode( ',', $order->get_used_coupons() ) : '';
 
         } else {
-	    $used_coupons   = $order->get_used_coupons() ? implode( ',', $order->get_coupon_codes() ) : '';
+	    $used_coupons   = $order->get_coupon_codes() ? implode( ',', $order->get_coupon_codes() ) : '';
         }
 	        
         $customer       = $order->get_user();
