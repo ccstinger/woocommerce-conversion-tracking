@@ -117,8 +117,15 @@ class WCCT_Integration_Custom extends WCCT_Integration {
             $payment_method = $order->get_payment_method();
         }
 
+        if ( version_compare( WC()->version, '3.7', '<' ) ) {
+            // older version
+	    $used_coupons   = $order->get_used_coupons() ? implode( ',', $order->get_used_coupons() ) : '';
+
+        } else {
+	    $used_coupons   = $order->get_used_coupons() ? implode( ',', $order->get_coupon_codes() ) : '';
+        }
+	        
         $customer       = $order->get_user();
-        $used_coupons   = $order->get_used_coupons() ? implode( ',', $order->get_used_coupons() ) : '';
         $order_currency = $order_currency;
         $order_total    = $order->get_total() ? $order->get_total() : 0;
         $order_number   = $order->get_order_number();
